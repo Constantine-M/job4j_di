@@ -1,9 +1,9 @@
-package ru.job4j_di;
+package ru.job4j_di.di;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
-import ru.job4j_di.model.StartUI;
+import ru.job4j_di.di.model.StartUI;
 
 /**
  * Данный класс описывает создание и
