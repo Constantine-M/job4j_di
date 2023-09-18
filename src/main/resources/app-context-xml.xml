@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- В качестве атрибутов объявляется пространство имен (блок до тега <bean>).
+     Получается что-то вроде переменных.-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:field="http://www.springframework.org/schema/p"
+       xmlns:constructor="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    Создание бина - указываем его ID, класс и заполняем
+            примитивное поле name строкой "Vaska".
+            Класс указываем с полным путем. Например "annotation.Cat" не заработает!-->
+    <bean id="cat" class="ru.job4j_di.annotation.Cat" field:name="Vaska"/>
+    <bean id="bird" class="ru.job4j_di.annotation.Bird" field:name="simpleBird"/>
+    <bean id="getAlfaDog" class="ru.job4j_di.annotation.Dog" field:name="AlfaDog"/>
+    <bean id="secondDog" class="ru.job4j_di.annotation.Dog" field:name="SecondDog" />
+    <bean id="someDog" class="ru.job4j_di.annotation.Dog" field:name="Dog" />
+
+          <!--      Внедрение бина с помощью сеттера (там где field).
+                    И внедрение с помощью конструктора (там где constructor).
+                    А далее внедрение бинов в коллекции Set и Map.
+                    Не забудь добавить сеттеры на все поля в классах Dog, Cat, Bird, Man-->
+    <bean id="man" class="ru.job4j_di.annotation.Man"
+          field:dog-ref="getAlfaDog"
+          field:dog1-ref="someDog"
+          field:bird-ref="bird"
+          constructor:cat-ref="cat">
+
+        <property name="dogs">
+            <list>
+                <ref bean="getAlfaDog"/>
+                <ref bean="secondDog"/>
+                <ref bean="someDog"/>
+            </list>
+        </property>
+        <property name="pets">
+            <set>
+                <ref bean="cat"/>
+                <ref bean="bird"/>
+                <ref bean="getAlfaDog"/>
+                <ref bean="secondDog"/>
+                <ref bean="someDog"/>
+            </set>
+        </property>
+        <property name="mapDogs">
+            <map>
+                <entry key="getAlfaDog" value-ref="getAlfaDog"/>
+                <entry key="secondDog" value-ref="secondDog"/>
+                <entry key="someDog" value-ref="someDog"/>
+            </map>
+        </property>
+    </bean>
+</beans>
