@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--    В пространстве имен добавлена информация о контексте
+        (если сравнишь с файлом xml-based.xml).
+
+        Соответственно элемент xsi:schemaLocation был дополнен.-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <!--    Мы сообщаем spring'у пакет, который он должен сканировать
+            для поиска бинов, для которых отсутствует описание в
+            конфигурационном xml-файле.
+
+            В нашем случае это классы Person и BirdFactory - над этими
+            классами мы добавили аннотации Component и убрали
+            их описание из конфигурационного xml-файла.
+            Теперь фреймворк сканирует пакет, указанный в
+            base-package="ru.job4j.annotationbased", на предмет
+            обнаружения аннотаций @Component, и создает нужные бины.-->
+    <context:component-scan base-package="ru.job4j_di.annotationbased"/>
+
+    <!--    -->
+    <bean id="dogBean"
+          name="dog"
+          class="ru.job4j_di.annotationbased.Dog">
+        <constructor-arg name="name"
+                         value="Sharik" />
+    </bean>
+
+    <!--    -->
+    <bean id="catBean"
+          name="cat"
+          class="ru.job4j_di.annotationbased.Cat"
+          factory-method="createCat">
+        <constructor-arg name="name"
+                         value="Vaska" />
+    </bean>
+
+    <!--    -->
+    <bean id="parrotBean"
+          name="parrot"
+          factory-bean="birdFactory"
+          factory-method="getParrot">
+        <constructor-arg value="Kesha"/>
+    </bean>
+
+    <!--    -->
+    <bean id="canaryBean"
+          name="canary"
+          factory-bean="birdFactory"
+          factory-method="getCanary">
+        <constructor-arg value="Roza"/>
+    </bean>
+</beans>

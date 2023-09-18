@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    Описание каждого бина располагается внутри тегов <bean></bean>.
+            При этом в открывающем теге <bean> в виде аттрибутов расположена
+            основная информация о бине, а порядок внедрения компонентов
+            указывается внутри тегов <bean></bean>.
+            Бин Dog взят в качестве примера расположения информации о бине-->
+    <bean id="dogBean"
+          name="dog"
+          class="ru.job4j_di.xmlbased.Dog"
+          scope="prototype"
+          lazy-init="true"
+          init-method="postConstruct"
+          destroy-method="preDestroy">
+        <constructor-arg name="name" value="Sharik" />
+    </bean>
+
+    <!--    Бин Cat в качестве примера получения бина из статического метода.
+            Обрати внимание, как указан метод, в котором выполняется
+            создание бина - factory-method="createCat"-->
+    <bean id="catBean"
+          name="cat"
+          class="ru.job4j_di.xmlbased.Cat"
+          factory-method="createCat">
+        <constructor-arg name="name" value="Vaska" />
+    </bean>
+
+    <!--    Если же бины создаются с использованием фабрики, то сначала
+            объявляется бин фабрики, а потом для каждого бина указывается
+            его фабрика factory-bean="birdFactoryBean"
+            и метод factory-method, в котором происходит создание бина.
+
+            Значение в метод передается так же, как и в конструктор,
+            с использованием тега <constructor-arg>-->
+    <bean id="birdFactoryBean"
+          class="ru.job4j_di.xmlbased.BirdFactory"/>
+
+    <bean id="parrotBean"
+          name="parrot"
+          factory-bean="birdFactoryBean"
+          factory-method="getParrot">
+        <constructor-arg value="Kesha"/>
+    </bean>
+
+    <bean id="canaryBean"
+          name="canary"
+          factory-bean="birdFactoryBean"
+          factory-method="getCanary">
+        <constructor-arg value="Roza"/>
+    </bean>
+
+    <!--    Бин Person в качестве примера внедрения бинов через конструктор-->
+    <bean id="personBean"
+          name="person"
+          class="ru.job4j_di.xmlbased.Person"
+          lazy-init="true">
+        <constructor-arg name="canary" ref="canary"/>
+        <constructor-arg name="cat" ref="cat"/>
+        <constructor-arg name="dog" ref="dog"/>
+        <constructor-arg name="parrot" ref="parrot"/>
+        <constructor-arg name="name" value="Man"/>
+    </bean>
+</beans>
