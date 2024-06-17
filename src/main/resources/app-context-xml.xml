@@ -12,17 +12,17 @@
     <!--    Создание бина - указываем его ID, класс и заполняем
             примитивное поле name строкой "Vaska".
             Класс указываем с полным путем. Например "annotation.Cat" не заработает!-->
-    <bean id="cat" class="ru.job4j_di.annotation.Cat" field:name="Vaska"/>
-    <bean id="bird" class="ru.job4j_di.annotation.Bird" field:name="simpleBird"/>
-    <bean id="getAlfaDog" class="ru.job4j_di.annotation.Dog" field:name="AlfaDog"/>
-    <bean id="secondDog" class="ru.job4j_di.annotation.Dog" field:name="SecondDog" />
-    <bean id="someDog" class="ru.job4j_di.annotation.Dog" field:name="Dog" />
+    <bean id="cat" class="ru.job4j.di.annotation.Cat" field:name="Vaska"/>
+    <bean id="bird" class="ru.job4j.di.annotation.Bird" field:name="simpleBird"/>
+    <bean id="getAlfaDog" class="ru.job4j.di.annotation.Dog" field:name="AlfaDog"/>
+    <bean id="secondDog" class="ru.job4j.di.annotation.Dog" field:name="SecondDog" />
+    <bean id="someDog" class="ru.job4j.di.annotation.Dog" field:name="Dog" />
 
           <!--      Внедрение бина с помощью сеттера (там где field).
                     И внедрение с помощью конструктора (там где constructor).
                     А далее внедрение бинов в коллекции Set и Map.
                     Не забудь добавить сеттеры на все поля в классах Dog, Cat, Bird, Man-->
-    <bean id="man" class="ru.job4j_di.annotation.Man"
+    <bean id="man" class="ru.job4j.di.annotation.Man"
           field:dog-ref="getAlfaDog"
           field:dog1-ref="someDog"
           field:bird-ref="bird"

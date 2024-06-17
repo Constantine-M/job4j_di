@@ -12,7 +12,7 @@
             Бин Dog взят в качестве примера расположения информации о бине-->
     <bean id="dogBean"
           name="dog"
-          class="ru.job4j_di.xmlbased.Dog"
+          class="ru.job4j.di.xmlbased.Dog"
           scope="prototype"
           lazy-init="true"
           init-method="postConstruct"
@@ -25,7 +25,7 @@
             создание бина - factory-method="createCat"-->
     <bean id="catBean"
           name="cat"
-          class="ru.job4j_di.xmlbased.Cat"
+          class="ru.job4j.di.xmlbased.Cat"
           factory-method="createCat">
         <constructor-arg name="name" value="Vaska" />
     </bean>
@@ -38,7 +38,7 @@
             Значение в метод передается так же, как и в конструктор,
             с использованием тега <constructor-arg>-->
     <bean id="birdFactoryBean"
-          class="ru.job4j_di.xmlbased.BirdFactory"/>
+          class="ru.job4j.di.xmlbased.BirdFactory"/>
 
     <bean id="parrotBean"
           name="parrot"
@@ -57,7 +57,7 @@
     <!--    Бин Person в качестве примера внедрения бинов через конструктор-->
     <bean id="personBean"
           name="person"
-          class="ru.job4j_di.xmlbased.Person"
+          class="ru.job4j.di.xmlbased.Person"
           lazy-init="true">
         <constructor-arg name="canary" ref="canary"/>
         <constructor-arg name="cat" ref="cat"/>

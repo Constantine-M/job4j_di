@@ -27,7 +27,7 @@
     <!--    -->
     <bean id="dogBean"
           name="dog"
-          class="ru.job4j_di.annotationbased.Dog">
+          class="ru.job4j.di.annotationbased.Dog">
         <constructor-arg name="name"
                          value="Sharik" />
     </bean>
@@ -35,7 +35,7 @@
     <!--    -->
     <bean id="catBean"
           name="cat"
-          class="ru.job4j_di.annotationbased.Cat"
+          class="ru.job4j.di.annotationbased.Cat"
           factory-method="createCat">
         <constructor-arg name="name"
                          value="Vaska" />
