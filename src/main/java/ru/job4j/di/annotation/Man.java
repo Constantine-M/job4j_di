@@ -39,8 +39,6 @@ public class Man {
      * можно использовать аннотацию
      * {@link Resource}.
      */
-//    @Autowired
-//    @Qualifier("SecondDog")
     @Resource(name = "someDog")
     private Dog dog1;
 
@@ -115,7 +113,7 @@ public class Man {
 
     public void print() {
         String ls = System.lineSeparator();
-//        System.out.printf("My Dog: %s%n", dog.print());
+        /*System.out.printf("My Dog: %s%n", dog.print());*/
         System.out.printf("My SecondDog: %s%n", dog1.print());
         System.out.printf("My Cat: %s%n", cat.print());
         System.out.printf("My Bird: %s%n", bird.print());
