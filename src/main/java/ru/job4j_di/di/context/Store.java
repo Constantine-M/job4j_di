@@ -1,4 +1,4 @@
-package ru.job4j_di.di.model;
+package ru.job4j_di.di.context;
 
 import org.springframework.stereotype.Component;
 

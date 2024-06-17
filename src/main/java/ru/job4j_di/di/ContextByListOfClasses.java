@@ -2,8 +2,8 @@ package ru.job4j_di.di;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.job4j_di.di.model.StartUI;
-import ru.job4j_di.di.model.Store;
+import ru.job4j_di.di.context.StartUI;
+import ru.job4j_di.di.context.Store;
 
 /**
  * Данный класс описывает создание бина

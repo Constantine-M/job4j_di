@@ -3,8 +3,8 @@ package ru.job4j_di.di;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import ru.job4j_di.di.model.StartUI;
-import ru.job4j_di.di.model.Store;
+import ru.job4j_di.di.context.StartUI;
+import ru.job4j_di.di.context.Store;
 
 /**
  * Данный класс описывает процесс

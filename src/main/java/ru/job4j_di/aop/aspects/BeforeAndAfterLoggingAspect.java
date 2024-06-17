@@ -1,12 +1,12 @@
 package ru.job4j_di.aop.aspects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -39,7 +39,7 @@ import java.util.Arrays;
 @Component
 public class BeforeAndAfterLoggingAspect {
 
-    public static final Logger LOG = LoggerFactory.getLogger(BeforeAndAfterLoggingAspect.class.getName());
+    public static final Logger LOG = LogManager.getLogger(BeforeAndAfterLoggingAspect.class.getName());
 
     @Before("execution(* ru.job4j_di.aop.service.*.*(..))")
     public void logBefore(JoinPoint joinPoint) {
