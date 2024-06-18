@@ -9,7 +9,7 @@ public class SpringDI {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(Store.class, StartUI.class, ConsoleInput.class);
+        context.scan("ru.job4j.di.di.context");
         context.refresh();
         var input = context.getBean(ConsoleInput.class);
         var store = context.getBean(Store.class);
