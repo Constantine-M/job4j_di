@@ -14,6 +14,9 @@ public class SpringDI {
         var input = context.getBean(ConsoleInput.class);
         var store = context.getBean(Store.class);
         StartUI ui = context.getBean(StartUI.class);
-        ui.init(store, input);
+        /*ui.init(store, input);*/
+        store.add("Consta");
+        var another = context.getBean(Store.class);
+        another.getAll().forEach(System.out::println); /*В консоли ничего не будет, т.к. scope у store = prototype*/
     }
 }
